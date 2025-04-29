@@ -134,10 +134,14 @@ Since Terraform does not support variables within `lifecycle {}` blocks, its not
     # task definition changes, and still allowing an external party to modify the image/tag
     # without conflicting with Terraform
     ignore_task_definition_changes = false
+
+    # This ensures that aws_ecs_task_definition matches the most recent active task
+    # definition, even if it was externally created.
+    task_definition_track_latest = true
   }
   ```
 
-This could be expanded further to include the entire container definitions argument, provided that external party making changes to the container definitions provides a copy that Terraform can retrieve and use when making updates to task definitions. This is possible due to the use of the `aws_ecs_task_definition` data source in the module - the data source retrieves the task definition currently defined in AWS. Using the `max()` function in Terraform, we can get the latest version via `max(aws_ecs_task_definition.this[0].revision, data.aws_ecs_task_definition.this[0].revision)` and use that as the `task_definition` value through reconstructing the `family:revision` format such as `"${aws_ecs_task_definition.this[0].family}:${local.max_task_def_revision}"`. With this work around, any changes made by Terraform would result in a new task definition revision resulting in Terraform updating the revision and deploying that change into the cluster. Likewise, any external party making changes to the task definition will increment the revision and deploy that into the cluster. Provided that Terraform can refer to the same values of the arguments changed by the external party, Terraform will be able to have a complete view of the current status and only make changes when necessary, without conflicting with the external party.
+This could be expanded further to include the entire container definitions argument, provided that external party making changes to the container definitions provides a copy that Terraform can retrieve and use when making updates to task definitions. With this work around, any changes made by Terraform would result in a new task definition revision resulting in Terraform updating the revision and deploying that change into the cluster. Likewise, any external party making changes to the task definition will increment the revision and deploy that into the cluster. Provided that Terraform can refer to the same values of the arguments changed by the external party, Terraform will be able to have a complete view of the current status and only make changes when necessary, without conflicting with the external party.
 
 <p align="center">
   <img src="./images/service.png" alt="ECS Service" width="40%">
