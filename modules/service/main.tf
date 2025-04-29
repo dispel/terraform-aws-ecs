@@ -598,20 +598,6 @@ locals {
   task_definition = local.create_task_definition ? "${aws_ecs_task_definition.this[0].family}:${aws_ecs_task_definition.this[0].revision}" : var.task_definition_arn
 }
 
-# This allows us to query both the existing as well as Terraform's state and get
-# and get the max version of either source, useful for when external resources
-# update the container definition
-data "aws_ecs_task_definition" "this" {
-  count = local.create_task_definition ? 1 : 0
-
-  task_definition = aws_ecs_task_definition.this[0].family
-
-  depends_on = [
-    # Needs to exist first on first deployment
-    aws_ecs_task_definition.this
-  ]
-}
-
 resource "aws_ecs_task_definition" "this" {
   count = local.create_task_definition ? 1 : 0
 
