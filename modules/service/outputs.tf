@@ -61,7 +61,7 @@ output "task_definition_family" {
 
 output "task_definition_family_revision" {
   description = "The family and revision (family:revision) of the task definition"
-  value       = "${try(aws_ecs_task_definition.this[0].family, "")}:${local.max_task_def_revision}"
+  value       = "${try(aws_ecs_task_definition.this[0].family, "")}:${try(aws_ecs_task_definition.this[0].revision, "")}"
 }
 
 ################################################################################
