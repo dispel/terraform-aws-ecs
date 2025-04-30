@@ -293,7 +293,7 @@ module "ecs_service" {
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_task_definition_arn"></a> [task\_definition\_arn](#input\_task\_definition\_arn) | Existing task definition ARN. Required when `create_task_definition` is `false` | `string` | `null` | no |
 | <a name="input_task_definition_placement_constraints"></a> [task\_definition\_placement\_constraints](#input\_task\_definition\_placement\_constraints) | Configuration block for rules that are taken into consideration during task placement (up to max of 10). This is set at the task definition, see `placement_constraints` for setting at the service | `any` | `{}` | no |
-| <a name="input_task_definition_track_latest"></a> [task\_definition\_track\_latest](#input\_task\_definition\_track\_latest) | Track latest task definition revision in case of external changes | `bool` | `false` | no |
+| <a name="input_task_definition_track_latest"></a> [task\_definition\_track\_latest](#input\_task\_definition\_track\_latest) | Track latest task definition revision in case of external changes | `bool` | `true` | no |
 | <a name="input_task_exec_iam_policy_path"></a> [task\_exec\_iam\_policy\_path](#input\_task\_exec\_iam\_policy\_path) | Path for the iam role | `string` | `null` | no |
 | <a name="input_task_exec_iam_role_arn"></a> [task\_exec\_iam\_role\_arn](#input\_task\_exec\_iam\_role\_arn) | Existing IAM role ARN | `string` | `null` | no |
 | <a name="input_task_exec_iam_role_description"></a> [task\_exec\_iam\_role\_description](#input\_task\_exec\_iam\_role\_description) | Description of the role | `string` | `null` | no |

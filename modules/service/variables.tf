@@ -277,7 +277,7 @@ variable "task_definition_arn" {
 variable "task_definition_track_latest" {
   description = "Track latest task definition revision in case of external changes"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "container_definitions" {
