@@ -46,7 +46,7 @@ locals {
     image                  = var.image
     interactive            = var.interactive
     links                  = local.is_not_windows ? var.links : null
-    linuxParameters        = local.is_not_windows ? { for k, v in local.linuxParameters : k => v if v != null } : null
+    linuxParameters        = local.is_not_windows ? { for k, v in var.linuxParameters : k => v if v != null } : null
     logConfiguration       = local.logConfiguration
     memory                 = var.memory
     memoryReservation      = var.memoryReservation
