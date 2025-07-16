@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [6.0.5](https://github.com/terraform-aws-modules/terraform-aws-ecs/compare/v6.0.4...v6.0.5) (2025-07-11)
+
+
+### Bug Fixes
+
+* Correct IAM statement `condition` variable type ([#315](https://github.com/terraform-aws-modules/terraform-aws-ecs/issues/315)) ([27e9114](https://github.com/terraform-aws-modules/terraform-aws-ecs/commit/27e91145c9e1a58ae4b454b8c45ba7dffcff5c94))
+
+## [6.0.4](https://github.com/terraform-aws-modules/terraform-aws-ecs/compare/v6.0.3...v6.0.4) (2025-07-11)
+
+
+### Bug Fixes
+
+* Remove non-functional `container_definition_defaults` ([#312](https://github.com/terraform-aws-modules/terraform-aws-ecs/issues/312)) ([dcc5ae5](https://github.com/terraform-aws-modules/terraform-aws-ecs/commit/dcc5ae58165a64976cc9bb2b49c51d0bceef2733))
+
+## [6.0.3](https://github.com/terraform-aws-modules/terraform-aws-ecs/compare/v6.0.2...v6.0.3) (2025-07-10)
+
+
+### Bug Fixes
+
+* Correct variable attribute for `step_adjustment` ([#310](https://github.com/terraform-aws-modules/terraform-aws-ecs/issues/310)) ([542616d](https://github.com/terraform-aws-modules/terraform-aws-ecs/commit/542616d1aff587a4391075b25b473bede3b259fe))
+
 ## [6.0.2](https://github.com/terraform-aws-modules/terraform-aws-ecs/compare/v6.0.1...v6.0.2) (2025-07-09)
 
 
